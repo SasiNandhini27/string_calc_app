@@ -32,8 +32,14 @@ class StringCalculatorService
       # Split the string using the delimiter(s) and convert them to integers
       numbers_array = numbers.split(/#{delimiter_regex}/).map(&:to_i)
   
+      # Validate and handle negative numbers
+      negatives = numbers_array.select { |n| n < 0 }
+      if negatives.any?
+        raise "Negatives not allowed: #{negatives.join(', ')}"
+      end
+
       # Return the sum of the numbers
       numbers_array.sum
     end
-  end
+end
   
