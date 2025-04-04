@@ -20,5 +20,9 @@ RSpec.describe StringCalculatorService, type: :service do
         it 'returns the sum of five numbers' do
             expect(StringCalculatorService.add('2,5,4,15,3,1')).to eq(30)
         end
+        
+        it 'returns the sum of numbers with new lines' do
+            expect(StringCalculatorService.add("1\n2,3")).to eq(6)
+        end
     end
 end
